@@ -1,0 +1,12 @@
+.bgrnd {
+    background-color: aquamarine;
+    margin-top: 100px;
+}
+.txt {
+    color: darkslategrey;
+    border: 4px solid darkslategrey;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
