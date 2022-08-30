@@ -1,102 +1,74 @@
-'use strict';
-
-
+"use strict";
 
 let firstNumber = null;
 let secondNumber = null;
 
 do {
-    firstNumber = prompt('Insert First Number');
-} while (incorrectValue1(firstNumber));
+  firstNumber = prompt("Insert First Number");
+} while (isIncorrectValue1(firstNumber));
 
+firstNumber = +firstNumber;
+console.log(firstNumber);
 
-function incorrectValue1 (str) {
-        return firstNumber === null || +firstNumber === 0 
-        || firstNumber.trim() === '' || isNaN(firstNumber);
-}
-
-alert('Not Bad, Go Ahead !!!');
-
+alert("Not Bad, Go Ahead !!!");
 
 do {
-    secondNumber = prompt('Insert Second Number');
-} while (incorrectValue2(secondNumber));
+  secondNumber = prompt("Insert Second Number");
+} while (isIncorrectValue2(secondNumber));
 
+secondNumber = +secondNumber;
+console.log(secondNumber);
 
-function incorrectValue2 (str) {
-        return secondNumber === null || +secondNumber === 0 
-        || secondNumber.trim() === '' || isNaN(secondNumber);
-}
+alert("Good Boy! But You Can Better!!!");
 
-alert('Good Boy! But You Can Better!!!');
-
-
-switch (calc) {
-    case '+':
-        alert (sum);
-    case '-':
-        alert (sub);
-    case '*':
-        alert (mult);
-    case '/':
-        alert (div);
-}
-
-
-alert('Good Choice');
+let calcAction;
 
 do {
-     calc = prompt('Choose Calculation Action');
-} while (inputAction(calc));
+  calcAction = prompt("Choose Calculation Action");
+} while (isInputActionInvalid(calcAction));
 
+let result = null;
 
-
-function inputAction (str) {
-    return calc !== '+' || calc !== '-' 
-    || calc !== '*' || calc !== '/';
+switch (calcAction) {
+  case "+":
+    result = firstNumber + secondNumber;
+    break;
+  case "-":
+    result = firstNumber - secondNumber;
+    break;
+  case "*":
+    result = firstNumber * secondNumber;
+    break;
+  case "/":
+    result = firstNumber / secondNumber;
+    break;
 }
 
+console.log(calcAction);
 
+alert("Good Choice");
 
+alert(firstNumber + calcAction + secondNumber + "=" + result);
+console.log(result);
 
-function sum (firstNumber, secondNumber) {
-    return firstNumber + secondNumber;
+function isIncorrectValue1(str) {
+  return (
+    firstNumber === null ||
+    +firstNumber === 0 ||
+    firstNumber.trim() === "" ||
+    isNaN(firstNumber)
+  );
 }
 
-function sub (firstNumber, secondNumber) { 
-    return firstNumber - secondNumber;
+function isIncorrectValue2(str) {
+  return (
+    secondNumber === null ||
+    +secondNumber === 0 ||
+    secondNumber.trim() === "" ||
+    isNaN(secondNumber)
+  );
 }
 
-function mult (firstNumber, secondNumber) {
-    return firstNumber * secondNumber;
+function isInputActionInvalid(calc) {
+  return calc !== "+" && calc !== "-" && calc !== "*" && calc !== "/";
 }
-
-function div (firstNumber, secondNumber) {
-    return firstNumber / secondNumber;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
