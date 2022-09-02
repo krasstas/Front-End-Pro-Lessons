@@ -1,74 +1,53 @@
 "use strict";
 
-let firstNumber = null;
-let secondNumber = null;
+const customerNumber = getCustomerNumber();
 
-do {
-  firstNumber = prompt("Insert First Number");
-} while (isIncorrectValue1(firstNumber));
+const evenCalc = getEvenCalc(customerNumber);
 
-firstNumber = +firstNumber;
-console.log(firstNumber);
+const oddCalc = getOddCalc(customerNumber);
 
-alert("Not Bad, Go Ahead !!!");
+console.log(`Your choice: ${customerNumber}`);
+alert(`Your choice: ${customerNumber}`);
 
-do {
-  secondNumber = prompt("Insert Second Number");
-} while (isIncorrectValue2(secondNumber));
+console.log(`Even calculation: ${evenCalc} & Odd calculation: ${oddCalc}`);
+alert(`Even calculation: ${evenCalc} & Odd calculation: ${oddCalc}`);
 
-secondNumber = +secondNumber;
-console.log(secondNumber);
+function getCustomerNumber() {
+  let customerNumber;
 
-alert("Good Boy! But You Can Better!!!");
+  do {
+    customerNumber = prompt("Choose your Number");
+  } while (isIncorrectCustomerNumber(customerNumber));
 
-let calcAction;
-
-do {
-  calcAction = prompt("Choose Calculation Action");
-} while (isInputActionInvalid(calcAction));
-
-let result = null;
-
-switch (calcAction) {
-  case "+":
-    result = firstNumber + secondNumber;
-    break;
-  case "-":
-    result = firstNumber - secondNumber;
-    break;
-  case "*":
-    result = firstNumber * secondNumber;
-    break;
-  case "/":
-    result = firstNumber / secondNumber;
-    break;
+  return +customerNumber;
 }
 
-console.log(calcAction);
-
-alert("Good Choice");
-
-alert(firstNumber + calcAction + secondNumber + "=" + result);
-console.log(result);
-
-function isIncorrectValue1(str) {
-  return (
-    firstNumber === null ||
-    +firstNumber === 0 ||
-    firstNumber.trim() === "" ||
-    isNaN(firstNumber)
-  );
+function isIncorrectCustomerNumber(check) {
+  return check === null || check <= 0 || check.trim() === "" || isNaN(check);
 }
 
-function isIncorrectValue2(str) {
-  return (
-    secondNumber === null ||
-    +secondNumber === 0 ||
-    secondNumber.trim() === "" ||
-    isNaN(secondNumber)
-  );
+function getEvenCalc(check) {
+  let i = 0;
+  let result = 0;
+  while (i <= check) {
+    if (i % 2 === 0) {
+      result += i;
+    }
+    i++;
+  }
+
+  return result;
 }
 
-function isInputActionInvalid(calc) {
-  return calc !== "+" && calc !== "-" && calc !== "*" && calc !== "/";
+function getOddCalc(check) {
+  let i = 0;
+  let result = 0;
+  while (i <= check) {
+    if (i % 2 === 1) {
+      result += i;
+    }
+    i++;
+  }
+
+  return result;
 }
